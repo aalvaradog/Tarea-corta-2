@@ -1,6 +1,7 @@
 #include "pch.h"
 #include <iostream>
 #include "ListaSimple.h"
+#include "ListaSimpleB.h"
 
 int main() {
 
@@ -29,5 +30,10 @@ int main() {
 	la.push_back("ana");
 	la.push_back("juan");
 	la.print();
+
+	ListaB<int> lb("Lista ejemplo");
+	int y;
+	lb.push_front(10);
+	lb.print();
 	std::cout << "\n";
 }
