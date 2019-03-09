@@ -32,8 +32,10 @@ int main() {
 	la.print();
 
 	ListaB<int> lb("Lista ejemplo");
-	int y;
-	lb.push_front(10);
+	//lb.push_front(10);
+	lb.push_back(5);
+	lb.push_front(9);
+	lb.push_back(8);
 	lb.print();
 	std::cout << "\n";
 }
