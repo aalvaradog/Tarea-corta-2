@@ -31,11 +31,14 @@ int main() {
 	la.push_back("juan");
 	la.print();
 
+	int z;
 	ListaB<int> lb("Lista ejemplo");
-	//lb.push_front(10);
+	lb.push_front(10);
 	lb.push_back(5);
 	lb.push_front(9);
 	lb.push_back(8);
+	//lb.remove(1,z);
+	//lb.insertar(90,2);
 	lb.print();
 	std::cout << "\n";
 }

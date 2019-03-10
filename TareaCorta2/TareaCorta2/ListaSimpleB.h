@@ -101,7 +101,52 @@ void ListaB<T, N>::push_back(T x) {
 
 template <class T, int N>
 void ListaB<T,N>::insertar(T x, int pos) {
+	if (primero == NULL) {
+		primero = new Node(NULL);
+		primero->elemento[pos] = x;
+	}
+	else if (!primero->lleno) {
+		if (pos > tam) {
+			primero->elemento[pos] = x;
+		}
+		else {
+			T contenedor=primero->elemento[pos];
+			T contenedor2;
+			for (int y = pos; y <= tam; y++) {
+				contenedor2 = primero->elemento[y + 1];
+				primero->elemento[y + 1] = contenedor;
+				contenedor = contenedor2;
+			}
+		}
+	}
+	else {
+		int cant = 10;
+		primero = new Node(primero);
+		while (pos > cant) {
+			if (primero->siguiente == NULL) {
+				primero = new Node(primero);
+			}
+			primero = primero->siguiente;
+			cant+=10;
+		}
+		return insertar(x, pos);
+	}
 	
+}
+template<class T, int N>
+bool ListaB<T, N>::remove(int pos, T &x) {
+	int cant = 10;
+	int y = pos;
+	T *contenedor;
+	while (cant <= pos) {
+		primero = primero->siguiente;
+		cant += 10;
+		y -= 10;
+	}
+	contenedor =&(primero->elemento[y]);
+	delete[] contenedor;
+	//primero->elemento[y] = NULL;
+	return true;
 }
 
 template<class T, int N>
