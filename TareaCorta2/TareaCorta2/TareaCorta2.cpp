@@ -46,7 +46,7 @@ int main() {
 	lb.push_back(11);
 	lb.push_back(12);
 	//lb.remove(1,z);
-	lb.insertar(2,13);
+	//lb.insertar(2,13);
 	lb.print();
 	std::cout << "\n";
 }

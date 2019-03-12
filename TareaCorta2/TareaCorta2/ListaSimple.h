@@ -112,15 +112,18 @@ bool List<T>::remove(int pos, T & x)
 	while (pos - 1 != 0) {
 		p = p->siguiente;
 	}
+	link q;
 	if (p->siguiente->siguiente != NULL) {
-		//delete p->siguiente;
 		x = p->siguiente->elemento;
+		q = p->siguiente;
 		p->siguiente = p->siguiente->siguiente;
+		delete q;
 	}
 	else {
-		//delete p->siguiente;
 		x = p->siguiente->elemento;
+		q = p->siguiente;
 		p->siguiente = NULL;
+		delete q;
 	}
 	return true;
 }
@@ -129,9 +132,13 @@ template<class T>
 bool List<T>::pop(T & x)
 {
 	link p = primero;
+	link q;
 
 	x = p->elemento;
-	primero = p->siguiente;
+	q = p;
+	p = p->siguiente;
+	primero = p;
+	delete q;
 	return true;
 }
 
