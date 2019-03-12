@@ -81,20 +81,23 @@ void ListaB<T,N>::push_front(T x) {
 
 template<class T, int N>
 void ListaB<T, N>::push_back(T x) {
+	link p = primero;
 	if (primero == NULL) {
 		primero = new Node(NULL);
 		primero->elemento[N-1] = x;
 	}
 	else if (primero->lleno == true) {
-		primero = new Node(primero);
-		primero->elemento[N-1] = x;
+		if (p->siguiente == NULL) {
+			p->siguiente = new Node(NULL);
+		}
+		p = p->siguiente;
+		p->elemento[tam%N] = x;
 	}
 	else {
-		cout << tam;
 		primero->elemento[tam] = x;
 	}
 	tam += 1;
-	if (tam == N) {
+	if (tam%10 == 0) {
 		primero->lleno = true;
 	}
 }
@@ -103,49 +106,32 @@ template <class T, int N>
 void ListaB<T,N>::insertar(T x, int pos) {
 	if (primero == NULL) {
 		primero = new Node(NULL);
-		primero->elemento[pos] = x;
 	}
-	else if (!primero->lleno) {
-		if (pos > tam) {
-			primero->elemento[pos] = x;
+	int cant = pos;
+	link p = primero;
+	while (tam < cant) {
+		cant -= N;
+		if (!p->siguiente) {
+			p->siguiente = new Node(NULL);
 		}
-		else {
-			T contenedor=primero->elemento[pos];
-			T contenedor2;
-			for (int y = pos; y <= tam; y++) {
-				contenedor2 = primero->elemento[y + 1];
-				primero->elemento[y + 1] = contenedor;
-				contenedor = contenedor2;
-			}
-		}
+		p = p->siguiente;
 	}
-	else {
-		int cant = 10;
-		primero = new Node(primero);
-		while (pos > cant) {
-			if (primero->siguiente == NULL) {
-				primero = new Node(primero);
-			}
-			primero = primero->siguiente;
-			cant+=10;
-		}
-		return insertar(x, pos);
-	}
-	
+	p->elemento[pos%N - 1] = x;
 }
 template<class T, int N>
 bool ListaB<T, N>::remove(int pos, T &x) {
 	int cant = 10;
 	int y = pos;
-	T *contenedor;
+	T contenedor;
 	while (cant <= pos) {
 		primero = primero->siguiente;
 		cant += 10;
 		y -= 10;
 	}
-	contenedor =&(primero->elemento[y]);
-	delete[] contenedor;
-	//primero->elemento[y] = NULL;
+	//contenedor =primero->elemento[y];
+	//T *eliminar = &contenedor;
+	//delete eliminar;
+	primero->elemento[y] = NULL;
 	return true;
 }
 
@@ -157,11 +143,20 @@ void ListaB<T,N>::print() {
 		while(p){
 		int cont = 0;
 		cout << p->elemento[cont];
-		while (cont+1 < tam) {
-			cout <<", "<< p->elemento[cont+1];
-			cont++;
+		if (p->lleno == false) {
+			while (cont + 1 <= tam%N) {
+				cout << ", " << p->elemento[cont + 1];
+				cont++;
+			}
+		}
+		else {
+			while (cont + 1 < N) {
+				cout << ", " << p->elemento[cont + 1];
+				cont++;
+			}
 		}
 		p = p->siguiente;
+		cout << " ,";
 		}
 	}
 	cout << "]";
