@@ -3,6 +3,8 @@
 #include "ListaSimple.h"
 #include "ListaSimpleB.h"
 
+using namespace std;
+
 int main() {
 
 	List<int> lm("Lista1");
@@ -31,7 +33,7 @@ int main() {
 	la.push_back("juan");
 	la.print();
 
-	int z;
+	//int z;
 	ListaB<int> lb("Lista ejemplo");
 	lb.push_front(1);
 	lb.push_back(2);
@@ -48,5 +50,29 @@ int main() {
 	//lb.remove(1,z);
 	//lb.insertar(2,13);
 	lb.print();
-	std::cout << "\n";
+
+	//Prueba de los métodos get(), get_back(), get_front()
+	List<int> lp("ListaP");
+	lp.push_front(0);
+	lp.push_back(1);
+	lp.push_back(2);
+	lp.push_back(3);
+	lp.print();
+
+	int y = 666;
+
+	lp.get(2, y);
+	cout << y << "\n";
+
+	lp.get_front(y);
+	cout << y << "\n";
+
+	lp.get_back(y);
+	cout << y << "\n";
+
+	lp.get_back(y);
+	cout << y << "\n";
+
+	cout << "Presione cualquier tecla para salir";
+	cin.ignore();
 }

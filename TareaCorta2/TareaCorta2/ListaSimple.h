@@ -214,7 +214,7 @@ void List<T>::print() {
 			p = p->siguiente;
 		}
 	}
-	cout << "]";
+	cout << "]\n";
 }
 
 template<class T>

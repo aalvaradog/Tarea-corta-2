@@ -159,7 +159,7 @@ void ListaB<T,N>::print() {
 		cout << " ,";
 		}
 	}
-	cout << "]";
+	cout << "]\n";
 }
 
 template<class T,int N>
