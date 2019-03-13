@@ -1,8 +1,10 @@
 #pragma once
 #include <iostream>
 #include <string>
-using std::string;
-using std::cout;
+
+using namespace std;
+
+
 template <class T, int N = 10>
 class ListaB {
 	struct Node {
@@ -134,6 +136,7 @@ bool ListaB<T, N>::remove(int pos, T &x) {
 	primero->elemento[y] = NULL;
 	return true;
 }
+
 
 template<class T, int N>
 void ListaB<T,N>::print() {
