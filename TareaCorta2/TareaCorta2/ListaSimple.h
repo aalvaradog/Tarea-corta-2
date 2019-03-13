@@ -2,10 +2,8 @@
 #pragma once
 #include <iostream>
 #include <string>
-
-using namespace std;
-
-
+using std::string;
+using std::cout;
 template <class T>
 class List {
 private:
@@ -158,50 +156,21 @@ bool List<T>::pop_back(T & x)
 }
 
 template<class T>
-bool List<T>::get(int pos, T& element)
+bool List<T>::get(int pos, T & element)
 {
-	if (this->tam != 0 && this->tam > pos) {
-		link p = this->primero;
-		int count = 0;
-		while (count != pos) {
-			p = p->siguiente;
-			count++;
-		}
-		element = p->elemento;
-		return true;
-	}
-	else {
-		return false;
-	}
+	return false;
 }
 
 template<class T>
 bool List<T>::get_front(T & element)
 {
-	if (primero) {
-		element = this->primero->elemento;
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	return false;
 }
 
 template<class T>
 bool List<T>::get_back(T & element)
 {
-	if (primero) {
-		link p = this->primero;
-		while (p->siguiente) {
-			p = p->siguiente;
-		}
-		element = p->elemento;
-		return true;
-	}
-	else{
-		return false;
-	}
+	return false;
 }
 
 template<class T>
