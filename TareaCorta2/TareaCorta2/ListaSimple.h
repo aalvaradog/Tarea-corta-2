@@ -2,8 +2,11 @@
 #pragma once
 #include <iostream>
 #include <string>
+
 using std::string;
 using std::cout;
+
+
 template <class T>
 class List {
 private:
@@ -158,6 +161,13 @@ bool List<T>::pop_back(T & x)
 template<class T>
 bool List<T>::get(int pos, T & element)
 {
+	int contador = 0;
+	link p = this.primero;
+	while (contador != pos) {
+		p = p.siguiente;
+		contador++;
+	}
+	element = p.elemento;
 	return false;
 }
 

@@ -137,14 +137,6 @@ bool ListaB<T, N>::remove(int pos, T &x) {
 	return true;
 }
 
-template <class T, int N>
-bool pop(T& x) {
-	if (this.primero) {
-		cout << "No estoy vacío"
-	
-	}
-	return true;
-}
 
 template<class T, int N>
 void ListaB<T,N>::print() {
