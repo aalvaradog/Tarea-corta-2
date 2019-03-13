@@ -128,19 +128,29 @@ bool ListaB<T, N>::remove(int pos, T &x) {
 		cant += 10;
 		y -= 10;
 	}
-	//contenedor =primero->elemento[y];
-	//T *eliminar = &contenedor;
-	//delete eliminar;
 	primero->elemento[y] = NULL;
 	return true;
 }
 
 template<class T, int N>
 void ListaB<T,N>::print() {
-	cout <<"\n"<< nombreLista << " = [";
+	
 	if (primero) {
 		link p = primero;
-		while(p){
+		cout << "\n" << nombreLista << " = [";
+		if (tam) {
+			cout << primero->elemento[0];
+		}
+		unsigned int i = 1;
+		while (i < tam && p != NULL) {
+			if (i%N == 0) {
+				p = p->siguiente;
+			}cout << ", " << p->elemento[i%N];
+			i++;
+		}
+		cout << "]\n";
+	}
+		/**while(p){
 		int cont = 0;
 		cout << p->elemento[cont];
 		if (p->lleno == false) {
@@ -160,6 +170,7 @@ void ListaB<T,N>::print() {
 		}
 	}
 	cout << "]\n";
+	*/
 }
 
 template<class T,int N>

@@ -23,7 +23,6 @@ int main() {
 	lm.remove(1, x);
 	lm.pop(x);
 	lm.pop_back(x);
-	//cout <<"Prueba: "<< x;
 
 
 	lm.print();
