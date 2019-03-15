@@ -32,9 +32,9 @@ int main() {
 	la.push_back("juan");
 	la.print();
 
-	//int z;
-	ListaB<int> lb("Lista ejemplo");
 	int z;
+	ListaB<int> lb("Lista ejemplo");
+	
 	lb.push_front(1);
 	lb.push_back(2);
 	lb.push_back(3);
@@ -60,7 +60,9 @@ int main() {
 	lb.remove(10,z);
 	lb.print();
 	cout << z << "\n";
-
+	int w;
+	cout << lb.get_front(w) << "\n";
+	cout << w<<"\n";
 	//Prueba de los métodos get(), get_back(), get_front()
 	List<int> lp("ListaP");
 	lp.push_front(0);
@@ -82,6 +84,7 @@ int main() {
 
 	lp.get_back(y);
 	cout << y << "\n";
+
 
 	cout << "Presione cualquier tecla para salir";
 	cin.ignore();

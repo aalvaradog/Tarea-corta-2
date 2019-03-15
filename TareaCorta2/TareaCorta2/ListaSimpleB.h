@@ -185,6 +185,37 @@ bool ListaB<T, N>::remove(int pos, T &x) {
 	}return true;
 }
 
+
+template<class T, int N>
+bool ListaB<T, N>::get_front(T& x) {
+	if ( this->tam > 0) {
+		x = this->primero->elemento[0];
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+template<class T, int N>
+bool ListaB<T, N>::get_back(T& x) {
+	if (this->tam > 0) {
+		int count = tam;
+		link p = this->primero;
+		while (p->siguiente) {
+			p = p->siguiente;
+			count -= 10;
+		}
+		for (int i = 0; i < count; i++) {
+			x = p->elemento[i];
+		}
+		return true;
+
+	}
+	else
+		return false;
+}
+
 template<class T, int N>
 void ListaB<T,N>::print() {
 	
