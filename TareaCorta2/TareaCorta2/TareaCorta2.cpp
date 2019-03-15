@@ -60,9 +60,10 @@ int main() {
 	lb.remove(10,z);
 	lb.print();
 	cout << z << "\n";
-	int w;
-	cout << lb.get_front(w) << "\n";
+	int w = 0;
+	cout << lb.pop(w) << "\n";
 	cout << w<<"\n";
+	lb.print();
 	//Prueba de los métodos get(), get_back(), get_front()
 	List<int> lp("ListaP");
 	lp.push_front(0);
