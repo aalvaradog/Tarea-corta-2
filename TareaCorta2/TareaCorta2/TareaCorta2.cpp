@@ -34,9 +34,10 @@ int main() {
 
 	//int z;
 	ListaB<int> lb("Lista ejemplo");
+	int z;
 	lb.push_front(1);
 	lb.push_back(2);
-	lb.push_front(3);
+	lb.push_back(3);
 	lb.push_back(4);
 	lb.push_back(5);
 	lb.push_back(6);
@@ -46,11 +47,19 @@ int main() {
 	lb.push_back(10);
 	lb.push_back(11);
 	lb.push_back(12);
+	lb.push_back(13);
+	lb.push_back(14);
+	lb.push_back(15);
+	lb.push_back(16);
+	lb.push_back(17);
+	lb.push_back(18);
+	lb.push_back(19);
+	lb.push_back(20);
 	lb.push_front(99);
 	lb.insertar(13, 5);
-	//lb.remove(1,z);
-	//lb.insertar(2,13);
+	lb.remove(10,z);
 	lb.print();
+	cout << z << "\n";
 
 	//Prueba de los métodos get(), get_back(), get_front()
 	List<int> lp("ListaP");
