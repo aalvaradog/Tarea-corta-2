@@ -50,33 +50,32 @@ int ListaB<T,N>::len() {
 }
 template<class T, int N>
 void ListaB<T,N>::push_front(T x) {
+	link p = primero;
 	if (primero == NULL) {
 		primero = new Node(NULL);
 		primero->elemento[0] = x;
 	}
-	else if (primero->lleno == true) {
-		primero = new Node(primero);
-		primero->elemento[0] = x;
-	}
-	else if (tam == 1) {
-		primero->elemento[1] = primero->elemento[0];
-		primero->elemento[0] = x;
-	}else{
-		T con2;
-		T con=primero->elemento[0];
-		int conte = 0;
-		while (conte < tam) {
-			con2= primero->elemento[conte + 1];
-			primero->elemento[conte + 1] = con;
-			con = con2;
-			conte++;
+	else {
+		T c=p->elemento[0];
+		T c2;
+		T valor = x;
+		int cont = 0;
+		while (cont < tam) {
+			for (int i = 0; i+1 < N; i++) {
+				c2 = p->elemento[i + 1];
+				p->elemento[i + 1] = c;
+				c = c2;
+			}
+			p->elemento[0] = valor;
+			valor = c;
+			cont+=N;
+			if (p->lleno==true && !p->siguiente) {
+				p->siguiente = new Node(NULL);
+			}
+			p = p->siguiente;
 		}
-		primero->elemento[0] = x;
 	}
-	tam += 1;
-	if (tam == N) {
-		primero->lleno = true;
-	}
+	tam++;
 }
 
 template<class T, int N>
@@ -84,26 +83,56 @@ void ListaB<T, N>::push_back(T x) {
 	link p = primero;
 	if (primero == NULL) {
 		primero = new Node(NULL);
-		primero->elemento[N-1] = x;
+		primero->elemento[0] = x;
 	}
-	else if (primero->lleno == true) {
-		if (p->siguiente == NULL) {
-			p->siguiente = new Node(NULL);
-		}
+	while (p->siguiente) {
 		p = p->siguiente;
-		p->elemento[tam%N] = x;
 	}
-	else {
-		primero->elemento[tam] = x;
+	if (p->lleno) {
+		p->siguiente = new Node(NULL);
+		p = p->siguiente;
 	}
-	tam += 1;
-	if (tam%10 == 0) {
-		primero->lleno = true;
+	p->elemento[tam%N] = x;
+	tam++;
+	if (tam%N == 0) {
+		p->lleno = true;
 	}
 }
 
 template <class T, int N>
 void ListaB<T,N>::insertar(T x, int pos) {
+	if (!primero) {
+		primero = new Node(NULL);
+	}
+	link p = primero;
+	int cont = N;
+	while (cont <= pos) {
+		if (!p->siguiente) {
+			p->siguiente = new Node(NULL);
+		}
+		p = p->siguiente;
+		cont += N;
+	}
+	T c = p->elemento[pos];
+	T c2;
+	T valor = x;
+	while (cont < tam) {
+		for (int i = 0; i + 1 < N; i++) {
+			c2 = p->elemento[i + 1];
+			p->elemento[i + 1] = c;
+			c = c2;
+		}
+		p->elemento[0] = valor;
+		valor = c;
+		cont += N;
+		if (p->lleno == true && !p->siguiente) {
+			p->siguiente = new Node(NULL);
+		}
+		p = p->siguiente;
+	}
+	tam++;
+
+	/**
 	if (primero == NULL) {
 		primero = new Node(NULL);
 	}
@@ -116,7 +145,7 @@ void ListaB<T,N>::insertar(T x, int pos) {
 		}
 		p = p->siguiente;
 	}
-	p->elemento[pos%N - 1] = x;
+	p->elemento[pos%N - 1] = x;*/
 }
 template<class T, int N>
 bool ListaB<T, N>::remove(int pos, T &x) {
@@ -150,27 +179,6 @@ void ListaB<T,N>::print() {
 		}
 		cout << "]\n";
 	}
-		/**while(p){
-		int cont = 0;
-		cout << p->elemento[cont];
-		if (p->lleno == false) {
-			while (cont + 1 <= tam%N) {
-				cout << ", " << p->elemento[cont + 1];
-				cont++;
-			}
-		}
-		else {
-			while (cont + 1 < N) {
-				cout << ", " << p->elemento[cont + 1];
-				cont++;
-			}
-		}
-		p = p->siguiente;
-		cout << " ,";
-		}
-	}
-	cout << "]\n";
-	*/
 }
 
 template<class T,int N>

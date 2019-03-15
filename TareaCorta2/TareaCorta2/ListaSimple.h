@@ -108,6 +108,9 @@ void List<T>::insertarR(T x, int pos) {
 template<class T>
 bool List<T>::remove(int pos, T & x)
 {
+	if (pos > tam) {
+		return false;
+	}
 	link p = primero;
 	while (pos - 1 != 0) {
 		p = p->siguiente;
@@ -131,6 +134,9 @@ bool List<T>::remove(int pos, T & x)
 template<class T>
 bool List<T>::pop(T & x)
 {
+	if (tam = 0) {
+		return false;
+	}
 	link p = primero;
 	link q;
 
@@ -145,6 +151,9 @@ bool List<T>::pop(T & x)
 template<class T>
 bool List<T>::pop_back(T & x)
 {
+	if (tam = 0) {
+		return false;
+	}
 	link p = primero;
 	while (p->siguiente->siguiente != NULL) {
 		p = p->siguiente;
