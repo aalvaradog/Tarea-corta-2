@@ -61,8 +61,20 @@ int main() {
 	lb.print();
 	cout << z << "\n";
 
+	//Prueba del get_back(), get_front(), get(), pop_back() y pop()
+
+	int w = 666;
+	lb.get_back(w); cout <<"get_back=" << w << "\n";
+	lb.get_front(w); cout << "get_front=" << w << "\n";
+	lb.get(14, w); cout << "get, con posición 14=" << w << "\n";
+	lb.pop_back(w); cout << "pop_back=" << w << "\n";
+	lb.print();
+	lb.pop(w); cout << "pop=" << w << "\n";
+	lb.print();
+
+
 	//Prueba de los métodos get(), get_back(), get_front()
-	List<int> lp("ListaP");
+	List<int> lp("\nListaP");
 	lp.push_front(0);
 	lp.push_back(1);
 	lp.push_back(2);
