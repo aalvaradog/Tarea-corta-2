@@ -32,7 +32,6 @@ int main() {
 	la.push_back("juan");
 	la.print();
 
-	int z;
 	ListaB<int> lb("Lista ejemplo");
 	
 	lb.push_front(1);
@@ -59,7 +58,7 @@ int main() {
 	lb.insertar(13, 5);
 	lb.remove(10,z);
 	lb.print();
-	cout << z << "\n";
+	
 	//Prueba del get_back(), get_front(), get(), pop_back() y pop()
 
 	int w = 666;
@@ -70,6 +69,7 @@ int main() {
 	lb.print();
 	lb.pop(w); cout << "pop=" << w << "\n";
 	lb.print();
+
 	//Prueba de los métodos get(), get_back(), get_front()
 	List<int> lp("ListaP");
 	lp.push_front(0);
