@@ -47,6 +47,7 @@ int main() {
 	lb.push_back(11);
 	lb.push_back(12);
 	lb.push_front(99);
+	lb.insertar(13, 5);
 	//lb.remove(1,z);
 	//lb.insertar(2,13);
 	lb.print();
